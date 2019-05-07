@@ -5,24 +5,31 @@
  */
 package com.mycompany.filters;
 
+import javax.servlet.*;
+import javax.annotation.*;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.logging.Filter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author user
- */
+
+
+
 public class AuthFilter implements Filter{
+    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
+    @Override
  public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
   
      HttpServletRequest request = (HttpServletRequest)servletRequest;
      HttpServletResponse response = (HttpServletResponse)servletResponse;
      HttpSession session = request.getSession(false);
      
-     if (session == null || session.get.Attribute("user") == null) {
-         servletRequest.getServletContent().getRequestDispatcher("/login").forward(request, response);
+     if (session == null || session.getAttribute("user") == null) {
+         servletRequest.getServletContext().getRequestDispatcher("/login").forward(request, response);
      }
          chain.doFilter(request, response);
      }

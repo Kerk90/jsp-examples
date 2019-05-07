@@ -33,11 +33,11 @@ public class User {
     public void setPassword(String password){  
         this.password = password;
     }
-    public String getbirthDate() {
+   
+    public LocalDate getBirthDate() {
         return birthDate;
     }
-    public void setbirthDate(String birthDate){  
+    public void setBirthDate(LocalDate birthDate){  
         this.birthDate = birthDate;
     }
-
 }
