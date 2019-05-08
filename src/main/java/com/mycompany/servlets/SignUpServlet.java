@@ -48,6 +48,7 @@ public class SignUpServlet extends HttpServlet {
         LocalDate birthDate = LocalDate.parse(req.getParameter("birthDate"));
 
         User user = new User(name, password, birthDate);
+        usersRepository.save(user);
         doGet(req, resp);
     }
 }
